@@ -1,15 +1,18 @@
 import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BreweryComponent } from './brewery.component';
 
 const routes: Routes = [
   {
     path: 'brewery',
+    component: BreweryComponent,
     children: [
       {
-        path: '',
+        path: 'search',
         component: BrewerySearchComponent,
       },
+      { path: '', redirectTo: 'search', pathMatch: 'full' },
     ],
   },
 ];

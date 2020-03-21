@@ -1,26 +1,30 @@
 # Application Brewery Explorer
 
-# generating modules
+## generating modules
 
 `ng g m brewery --routing=true`
 
-# generating components
+## generating components
 
 `ng g c brewery-search -m=brewery`
 
-# linters
+## linters
 
 For linting we use tslint together with prettier
 
-# pre-commit checks
+## pre-commit checks
 
 Pre-commit checks run after staging our changes and running git commit and before a commit is completed.
 
 If the checks fail then the commit is not made and an error shown, while if all checks pass the commit is made as normal.
 
+## Core module
+
+This module is imported only from the main module, as it contains singleton services that any element in the application can use. We do not want to import it in each module, as this will create additional instances.
+
 # Angular
 
-# BreweryExplorer
+## BreweryExplorer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
