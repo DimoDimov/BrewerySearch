@@ -48,5 +48,16 @@
     "tslint": "~5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.7.5"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js,css,html}": [
+      "npm run prettier && ng lint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

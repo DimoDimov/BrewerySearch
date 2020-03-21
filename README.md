@@ -12,6 +12,12 @@
 
 For linting we use tslint together with prettier
 
+# pre-commit checks
+
+Pre-commit checks run after staging our changes and running git commit and before a commit is completed.
+
+If the checks fail then the commit is not made and an error shown, while if all checks pass the commit is made as normal.
+
 # Angular
 
 # BreweryExplorer
