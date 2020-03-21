@@ -4,16 +4,24 @@ import { AppComponent } from './app.component';
 import { CoreModule } from '@modules/core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from '@shared/shared.module';
-import { BreweryModule } from '@modules/brewery/brewery.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
     CoreModule,
-    AppRoutingModule,
     SharedModule,
-    BreweryModule,
+    BrowserModule,
+    AppRoutingModule,
+    // BreweryModule,
+    StoreModule.forRoot(
+      {},
+      {
+        runtimeChecks: {
+          strictActionWithinNgZone: true,
+        },
+      },
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

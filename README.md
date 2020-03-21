@@ -22,9 +22,18 @@ If the checks fail then the commit is not made and an error shown, while if all 
 
 This module is imported only from the main module, as it contains singleton services that any element in the application can use. We do not want to import it in each module, as this will create additional instances.
 
-# Angular
+## state management NGRX
 
-## BreweryExplorer
+NGRX is a group of libraries “inspired” by the Redux pattern which in turn is “inspired” by the Flux pattern. Being a little more concise, this means that redux pattern is a simplified version of the Flux pattern and NGRX is an angular/rxjs version of the redux pattern.
+
+Motivation: Single source of truth
+
+## routing strategy
+
+lazy loading
+https://angular.io/guide/lazy-loading-ngmodules
+
+# Angular - auto generated Docs
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 

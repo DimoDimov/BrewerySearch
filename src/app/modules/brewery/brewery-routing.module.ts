@@ -5,7 +5,7 @@ import { BreweryComponent } from './brewery.component';
 
 const routes: Routes = [
   {
-    path: 'brewery',
+    path: '',
     component: BreweryComponent,
     children: [
       {
