@@ -8,6 +8,10 @@
 
 `ng g c brewery-search -m=brewery`
 
+## generating services
+
+`ng g s brewery`
+
 ## linters
 
 For linting we use tslint together with prettier
@@ -27,6 +31,14 @@ This module is imported only from the main module, as it contains singleton serv
 NGRX is a group of libraries “inspired” by the Redux pattern which in turn is “inspired” by the Flux pattern. Being a little more concise, this means that redux pattern is a simplified version of the Flux pattern and NGRX is an angular/rxjs version of the redux pattern.
 
 Motivation: Single source of truth
+
+## generate store
+
+`ng generate store AppState --root --module app.module.ts`
+
+## use schematics
+
+`ng config cli.defaultCollection @ngrx/schematics`
 
 ## routing strategy
 

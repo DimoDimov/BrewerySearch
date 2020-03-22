@@ -14,6 +14,8 @@
     "baseUrl": "./src",
     "paths": {
       "@": ["node_modules"],
+      "@core/*": ["app/core/*"],
+      "@models/*": ["app/models/*"],
       "@modules/*": ["app/modules/*"],
       "@shared/*": ["app/shared/*"]
     }
