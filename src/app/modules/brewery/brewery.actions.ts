@@ -1,7 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { IBreweryModel } from '@models/brewery.model';
 
-export const getBreweries = createAction('GET breweries');
+export const getBreweries = createAction(
+	'GET breweries',
+	props<{ name: string }>(),
+);
 
 export const loadBreweries = createAction(
 	'LOAD breweries',

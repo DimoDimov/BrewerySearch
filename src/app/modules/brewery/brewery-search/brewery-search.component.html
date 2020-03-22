@@ -1,2 +1,18 @@
-<p>brewery-search works!</p>
-<app-brewery-search-result></app-brewery-search-result>
+<div>
+	<p>brewery-search works!</p>
+	<form [formGroup]="searchBreweryForm">
+		<label>
+			Filter By Name:
+			<input type="text" formControlName="filterByName" />
+		</label>
+
+		<label>
+			Filter By State:
+			<input type="text" formControlName="filterByState" />
+		</label>
+	</form>
+	<div *ngFor="let brewery of breweries$ | async">
+		{{ brewery.name }}
+	</div>
+	<app-brewery-search-result></app-brewery-search-result>
+</div>

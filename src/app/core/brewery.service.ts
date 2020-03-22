@@ -15,16 +15,12 @@ const httpOptions = {
 export class BreweryService {
 	constructor(private httpClient: HttpClient) {}
 
-	GET_BREWERIES = 'https://api.openbrewerydb.org/breweries';
+	GET_BREWERIES = 'https://api.openbrewerydb.org/breweries?per_page=50';
 
-	breweries: IBreweryModel[];
-
-	getBreweries() {
-		return this.httpClient.get(this.GET_BREWERIES, httpOptions);
-	}
-
-	loadBreweries() {
-		console.log('loadBreweries');
-		return [];
+	getBreweries(name?: string) {
+		const url = name
+			? `${this.GET_BREWERIES}&&by_name=${name}`
+			: this.GET_BREWERIES;
+		return this.httpClient.get(url, httpOptions);
 	}
 }

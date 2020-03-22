@@ -1,9 +1,9 @@
 import { IBreweryModel } from '@models/brewery.model';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { getBreweries } from './brewery.actions';
-import { switchMap, catchError, map, mergeMap } from 'rxjs/operators';
-import { of, EMPTY } from 'rxjs';
+import { getBreweries, loadBreweries } from './brewery.actions';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { BreweryService } from '@core/brewery.service';
 
 @Injectable()
@@ -12,16 +12,13 @@ export class BreweryEffects {
 		this.actions$.pipe(
 			ofType(getBreweries),
 			mergeMap(action =>
-				this.breweryService.getBreweries().pipe(
+				this.breweryService.getBreweries(action.name).pipe(
 					map(
-						breweries => ({
-							type: 'LOAD breweries',
-							breweries,
-						}),
-						catchError(error =>
+						(breweries: IBreweryModel[]) => loadBreweries({ breweries }),
+						catchError((message: string) =>
 							of({
 								type: 'ERROR breweries',
-								message: error,
+								message,
 							}),
 						),
 					),

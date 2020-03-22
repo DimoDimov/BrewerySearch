@@ -10,7 +10,7 @@ export const initialState: IBreweryState = {
 	brewery: { items: [], error: '' },
 };
 
-export const BreweryReducer = createReducer(
+export const breweryReducer = createReducer(
 	initialState,
 	on(loadBreweries, (state, action) => {
 		console.log('ld breweries', action.breweries);

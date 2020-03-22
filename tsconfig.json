@@ -1,31 +1,31 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "lib": ["es2018", "dom"],
-    "baseUrl": "./src",
-    "paths": {
-      "@": ["node_modules"],
-      "@core/*": ["app/core/*"],
-      "@models/*": ["app/models/*"],
-      "@modules/*": ["app/modules/*"],
-      "@shared/*": ["app/shared/*"]
-    }
-  },
-  "angularCompilerOptions": {
-    "annotationsAs": "static fields",
-    "annotateForClosureCompiler": true,
-    "preserveWhitespaces": false,
-    "fullTemplateTypeCheck": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"outDir": "./dist/out-tsc",
+		"sourceMap": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"target": "es2015",
+		"lib": ["es2018", "dom"],
+		"baseUrl": "./src",
+		"paths": {
+			"@": ["node_modules"],
+			"@core/*": ["app/core/*"],
+			"@models/*": ["app/models/*"],
+			"@modules/*": ["app/modules/*"],
+			"@shared/*": ["app/shared/*"]
+		}
+	},
+	"angularCompilerOptions": {
+		"annotationsAs": "static fields",
+		"annotateForClosureCompiler": true,
+		"preserveWhitespaces": false,
+		"fullTemplateTypeCheck": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "**/*.spec.ts"]
 }

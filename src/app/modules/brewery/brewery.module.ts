@@ -8,6 +8,9 @@ import { BrewerySearchResultComponent } from './brewery-search-result/brewery-se
 import { BrewerySearchResultLineComponent } from './brewery-search-result-line/brewery-search-result-line.component';
 import { EffectsModule } from '@ngrx/effects';
 import { BreweryEffects } from './brewery.effects';
+import { StoreModule } from '@ngrx/store';
+import { breweryReducer } from './brewery.reducers';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -19,6 +22,8 @@ import { BreweryEffects } from './brewery.effects';
 	imports: [
 		CommonModule,
 		BreweryRoutingModule,
+		ReactiveFormsModule,
+		StoreModule.forFeature('brewery', breweryReducer),
 		EffectsModule.forFeature([BreweryEffects]),
 	],
 })
