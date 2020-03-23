@@ -1,18 +1,29 @@
 <div>
-	<p>brewery-search works!</p>
-	<form [formGroup]="searchBreweryForm">
-		<label>
-			Filter By Name:
-			<input type="text" formControlName="filterByName" />
-		</label>
+  <p>brewery-search works!</p>
+  <form [formGroup]="searchBreweryForm">
+    <label>
+      Filter By Name:
+      <input
+        (keydown)="validateNumber($event)"
+        type="text"
+        ng-model="searchBreweryForm.filterByName"
+        formControlName="filterByName"
+      />
+    </label>
 
-		<label>
-			Filter By State:
-			<input type="text" formControlName="filterByState" />
-		</label>
-	</form>
-	<div *ngFor="let brewery of breweries$ | async">
-		{{ brewery.name }}
-	</div>
-	<app-brewery-search-result></app-brewery-search-result>
+    <select (change)="onStateOptionChange($event.target.value)">
+      <option value="0">--All--</option>
+      <option
+        *ngFor="let breweryStateOption of breweryStates$ | async"
+        value="{{ breweryStateOption }}"
+      >
+        {{ breweryStateOption }}
+      </option>
+    </select>
+  </form>
+
+  <div *ngFor="let brewery of breweries$ | async">
+    {{ brewery.name }}
+  </div>
+  <app-brewery-search-result></app-brewery-search-result>
 </div>

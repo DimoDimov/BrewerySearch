@@ -2,16 +2,16 @@ import { createAction, props } from '@ngrx/store';
 import { IBreweryModel } from '@models/brewery.model';
 
 export const getBreweries = createAction(
-	'GET breweries',
-	props<{ name: string }>(),
+  'GET breweries',
+  props<{ name: string }>(),
 );
 
 export const loadBreweries = createAction(
-	'LOAD breweries',
-	props<{ breweries: IBreweryModel[] }>(),
+  'LOAD breweries',
+  props<{ breweries: IBreweryModel[] }>(),
 );
 
 export const errorBreweries = createAction(
-	'ERROR breweries',
-	props<{ message: string }>(),
+  'ERROR breweries',
+  props<{ message: string }>(),
 );

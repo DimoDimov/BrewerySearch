@@ -13,18 +13,18 @@ import { breweryReducer } from './brewery.reducers';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-	declarations: [
-		BrewerySearchComponent,
-		BreweryComponent,
-		BrewerySearchResultComponent,
-		BrewerySearchResultLineComponent,
-	],
-	imports: [
-		CommonModule,
-		BreweryRoutingModule,
-		ReactiveFormsModule,
-		StoreModule.forFeature('brewery', breweryReducer),
-		EffectsModule.forFeature([BreweryEffects]),
-	],
+  declarations: [
+    BrewerySearchComponent,
+    BreweryComponent,
+    BrewerySearchResultComponent,
+    BrewerySearchResultLineComponent,
+  ],
+  imports: [
+    CommonModule,
+    BreweryRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('brewery', breweryReducer),
+    EffectsModule.forFeature([BreweryEffects]),
+  ],
 })
 export class BreweryModule {}

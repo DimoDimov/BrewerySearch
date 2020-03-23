@@ -8,27 +8,27 @@ import { BreweryService } from '@core/brewery.service';
 
 @Injectable()
 export class BreweryEffects {
-	loadBreweries$ = createEffect(() =>
-		this.actions$.pipe(
-			ofType(getBreweries),
-			mergeMap(action =>
-				this.breweryService.getBreweries(action.name).pipe(
-					map(
-						(breweries: IBreweryModel[]) => loadBreweries({ breweries }),
-						catchError((message: string) =>
-							of({
-								type: 'ERROR breweries',
-								message,
-							}),
-						),
-					),
-				),
-			),
-		),
-	);
+  loadBreweries$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getBreweries),
+      mergeMap(action =>
+        this.breweryService.getBreweries(action.name).pipe(
+          map(
+            (breweries: IBreweryModel[]) => loadBreweries({ breweries }),
+            catchError((message: string) =>
+              of({
+                type: 'ERROR breweries',
+                message,
+              }),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 
-	constructor(
-		private actions$: Actions,
-		private breweryService: BreweryService,
-	) {}
+  constructor(
+    private actions$: Actions,
+    private breweryService: BreweryService,
+  ) {}
 }
