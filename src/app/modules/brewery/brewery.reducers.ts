@@ -13,7 +13,6 @@ export const initialState: IBreweryState = {
 export const breweryReducer = createReducer(
   initialState,
   on(loadBreweries, (state, action) => {
-    console.log('ld breweries', action.breweries);
     return {
       ...state,
       items: action.breweries,

@@ -1,18 +1,20 @@
 <div>
-  <p>brewery-search works!</p>
   <form [formGroup]="searchBreweryForm">
     <label>
       Filter By Name:
       <input
-        (keydown)="validateNumber($event)"
+        appAllowAlphabetOnly
         type="text"
         ng-model="searchBreweryForm.filterByName"
         formControlName="filterByName"
       />
     </label>
 
-    <select (change)="onStateOptionChange($event.target.value)">
-      <option value="0">--All--</option>
+    <select
+      (change)="onStateOptionChange($event.target.value)"
+      formControlName="filterByState"
+    >
+      <option value="">--All--</option>
       <option
         *ngFor="let breweryStateOption of breweryStates$ | async"
         value="{{ breweryStateOption }}"
@@ -20,10 +22,16 @@
         {{ breweryStateOption }}
       </option>
     </select>
+    <button (click)="onReset()">Reset</button>
   </form>
 
-  <div *ngFor="let brewery of breweries$ | async">
+  <div
+    *ngFor="
+      let brewery of breweries$ | async | breweryFilterByState: filterState
+    "
+  >
     {{ brewery.name }}
   </div>
+
   <app-brewery-search-result></app-brewery-search-result>
 </div>

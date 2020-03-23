@@ -12,6 +12,10 @@
 
 `ng g s brewery`
 
+## generating pipes
+
+`ng g p brewery-filter-by-state -m=brewery`
+
 ## linters
 
 For linting we use tslint together with prettier

@@ -1,7 +1,7 @@
-import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BreweryComponent } from './brewery.component';
+import { BrewerySearchComponent } from './brewery-search/brewery-search.component';
 
 const routes: Routes = [
   {

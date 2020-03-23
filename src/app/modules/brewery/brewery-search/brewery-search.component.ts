@@ -2,26 +2,35 @@ import { selectBreweries, selectBreweriesStates } from './../brewery.reducers';
 import { IBreweryModel } from '@models/brewery.model';
 import { IBreweryState } from '@modules/brewery/brewery.reducers';
 import { getBreweries } from './../brewery.actions';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {
+  map,
+  debounceTime,
+  distinctUntilChanged,
+  takeUntil,
+  filter,
+  switchMap,
+} from 'rxjs/operators';
 @Component({
   selector: 'app-brewery-search',
   templateUrl: './brewery-search.component.html',
   styleUrls: ['./brewery-search.component.css'],
 })
-export class BrewerySearchComponent implements OnInit {
+export class BrewerySearchComponent implements OnDestroy {
   searchBreweryForm = new FormGroup({
     filterByName: new FormControl(''),
+    filterByState: new FormControl(''),
   });
 
+  destroy$: Subject<boolean> = new Subject<boolean>();
   breweryState$: Observable<IBreweryState>;
   breweries$: Observable<IBreweryModel[]>;
   breweryStates$: Observable<string[]>;
   error$: Observable<string>;
-  options: any[];
+  filterState: string;
 
   constructor(private store: Store<IBreweryState>) {
     this.store.dispatch(getBreweries({ name: '' }));
@@ -31,26 +40,17 @@ export class BrewerySearchComponent implements OnInit {
 
     this.onChanges();
   }
-
-  validateNumber(event) {
-    const keyCode = event.keyCode;
-    const excludedKeys = [8, 32, 37, 39, 46];
-
-    if (
-      !(
-        (keyCode >= 65 && keyCode <= 90) ||
-        (keyCode >= 97 && keyCode <= 122) ||
-        excludedKeys.includes(keyCode)
-      )
-    ) {
-      event.preventDefault();
-    }
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    // unsubscribe from the subject itself:
+    this.destroy$.unsubscribe();
   }
 
   onChanges(): void {
     this.searchBreweryForm
       .get('filterByName')
       .valueChanges.pipe(
+        takeUntil(this.destroy$),
         debounceTime(400),
         distinctUntilChanged(),
         map(query => {
@@ -61,9 +61,13 @@ export class BrewerySearchComponent implements OnInit {
       .subscribe();
   }
 
-  onStateOptionChange = (option: string) => {
-    console.log('selected', option);
-  };
+  onStateOptionChange(newState: string) {
+    this.filterState = newState;
+  }
 
-  ngOnInit(): void {}
+  onReset() {
+    this.searchBreweryForm.get('filterByName').setValue('');
+    this.searchBreweryForm.get('filterByState').setValue('');
+    this.filterState = '';
+  }
 }
