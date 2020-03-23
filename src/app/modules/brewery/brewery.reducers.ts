@@ -33,5 +33,8 @@ export const selectBreweriesStates = (state: IBreweryState) => {
   return [...setOfStates];
 };
 
+export const selectBreweriesCount = (state: IBreweryState) =>
+  state.brewery.items.length;
+
 export const selectBreweriesError = (state: IBreweryState) =>
   state.brewery.error;

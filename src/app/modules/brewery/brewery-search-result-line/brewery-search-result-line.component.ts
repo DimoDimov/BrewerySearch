@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IBreweryModel } from '@models/brewery.model';
 
 @Component({
   selector: 'app-brewery-search-result-line',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brewery-search-result-line.component.css'],
 })
 export class BrewerySearchResultLineComponent implements OnInit {
+  @Input() brewery: IBreweryModel;
   constructor() {}
 
   ngOnInit(): void {}

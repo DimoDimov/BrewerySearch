@@ -1,1 +1,14 @@
-<p>brewery-search-result-line works!</p>
+<div class="flex-container">
+  <div class="wrapper">
+    <div>
+      <div class="name">{{ brewery?.name }}</div>
+      <div class="address">{{ brewery?.city }} {{ brewery?.state }}</div>
+    </div>
+
+    <div class="link">
+      <a href="{{ brewery?.website_url }}" target="_blank">{{
+        brewery?.website_url
+      }}</a>
+    </div>
+  </div>
+</div>

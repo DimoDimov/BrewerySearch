@@ -1,0 +1,45 @@
+.fixed-header {
+  width: 100%;
+  position: fixed;
+  color: #333;
+  padding: 10px 0;
+  background: #fff;
+  top: 70px;
+}
+
+.search-brewery__results {
+  margin-top: 150px;
+}
+
+.search__filter-item {
+  border-radius: 12px;
+  background: #f1f9ff;
+  border-color: #c2def5;
+  padding: 14px;
+  width: 200px;
+  height: 10px;
+}
+
+.search-options__container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-options__item {
+  text-align: center;
+  height: 40px;
+  border-radius: 30px;
+}
+
+@media (max-width: 600px) {
+  .search-options__container {
+    flex-direction: column;
+  }
+
+  .search-brewery__results {
+    margin-top: 220px;
+  }
+}

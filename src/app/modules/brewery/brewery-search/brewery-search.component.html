@@ -1,37 +1,49 @@
 <div>
-  <form [formGroup]="searchBreweryForm">
-    <label>
-      Filter By Name:
-      <input
-        appAllowAlphabetOnly
-        type="text"
-        ng-model="searchBreweryForm.filterByName"
-        formControlName="filterByName"
-      />
-    </label>
+  <div class="fixed-header">
+    <form [formGroup]="searchBreweryForm">
+      <div class="search-options__container">
+        <label class="search-options__item">
+          <input
+            class="search__filter-item"
+            appAllowAlphabetOnly
+            type="text"
+            ng-model="searchBreweryForm.filterByName"
+            formControlName="filterByName"
+            placeholder="Filter By Name"
+          />
+        </label>
 
-    <select
-      (change)="onStateOptionChange($event.target.value)"
-      formControlName="filterByState"
-    >
-      <option value="">--All--</option>
-      <option
-        *ngFor="let breweryStateOption of breweryStates$ | async"
-        value="{{ breweryStateOption }}"
-      >
-        {{ breweryStateOption }}
-      </option>
-    </select>
-    <button (click)="onReset()">Reset</button>
-  </form>
-
-  <div
-    *ngFor="
-      let brewery of breweries$ | async | breweryFilterByState: filterState
-    "
-  >
-    {{ brewery.name }}
+        <select
+          class="search-options__item search__filter-item"
+          (change)="onStateOptionChange($event.target.value)"
+          formControlName="filterByState"
+        >
+          <option value="">--Filter By State--</option>
+          <option
+            *ngFor="let breweryStateOption of breweryStates$ | async"
+            value="{{ breweryStateOption }}"
+          >
+            {{ breweryStateOption }}
+          </option>
+        </select>
+        <button
+          class="search-options__item search__filter-item"
+          (click)="onReset()"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
   </div>
 
-  <app-brewery-search-result></app-brewery-search-result>
+  <div class="search-brewery__results">
+    <div
+      *ngFor="
+        let brewery of breweries$ | async | breweryFilterByState: filterState
+      "
+    >
+      <app-brewery-search-result-line [brewery]="brewery">
+      </app-brewery-search-result-line>
+    </div>
+  </div>
 </div>

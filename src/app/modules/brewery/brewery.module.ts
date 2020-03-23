@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { BreweryRoutingModule } from './brewery-routing.module';
 import { BreweryComponent } from './brewery.component';
-import { BrewerySearchResultComponent } from './brewery-search-result/brewery-search-result.component';
 import { BrewerySearchResultLineComponent } from './brewery-search-result-line/brewery-search-result-line.component';
 import { EffectsModule } from '@ngrx/effects';
 import { BreweryEffects } from './brewery.effects';
@@ -18,7 +17,6 @@ import { BreweryFilterByStatePipe } from './pipes/brewery-filter-by-state.pipe';
   declarations: [
     BrewerySearchComponent,
     BreweryComponent,
-    BrewerySearchResultComponent,
     BrewerySearchResultLineComponent,
     BreweryFilterByStatePipe,
   ],

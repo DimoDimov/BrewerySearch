@@ -1,0 +1,9 @@
+.fixed-header {
+  width: 100%;
+  position: fixed;
+  color: #2e98f0;
+  padding: 5px 40px 40px 0px;
+  background: #fff;
+  top: 0px;
+  font-size: 20px;
+}

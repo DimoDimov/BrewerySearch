@@ -1,0 +1,37 @@
+.flex-container {
+  background-color: #f1f9ff;
+  padding: 10px 20px 10px 0px;
+}
+
+.flex-container > div.wrapper {
+  display: flex;
+  background-color: #fefefe;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  color: #2e98f0;
+}
+
+.wrapper div.name {
+  font-size: 18px;
+}
+
+.wrapper div.address {
+  font-size: 14px;
+}
+
+.wrapper > div.link {
+  font-size: 14px;
+  margin-left: auto;
+}
+
+.link > a {
+  text-decoration: none;
+  color: #2e98f0;
+}
+
+@media (max-width: 600px) {
+  .flex-container > div.wrapper {
+    flex-direction: column;
+  }
+}
